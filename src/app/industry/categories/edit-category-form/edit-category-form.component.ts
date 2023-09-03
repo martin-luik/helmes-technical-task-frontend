@@ -23,8 +23,6 @@ export class EditCategoryFormComponent implements OnInit {
     name: new FormControl<string | null>(null),
   });
 
-  tempCategories: Category[] = [];
-
   constructor(private categoryService: CategoryService) {
 
   }
@@ -65,14 +63,14 @@ export class EditCategoryFormComponent implements OnInit {
     }
   }
 
-  flattenCategories(categories: any[], selectedCategory: Category | null = null) {
+  flattenCategories(categories: any[], selectedCategory: Category | null = null, parentCategory: Category | null = null) {
     for (const category of categories) {
-      if (selectedCategory && category.relationId === selectedCategory.id) {
+      if (selectedCategory && (category.id === selectedCategory.id || (parentCategory && category.id === parentCategory.id))) {
         continue;
       }
       this.flattenedCategories.push(category);
       if (category.childCategories && category.childCategories.length > 0) {
-        this.flattenCategories(category.childCategories, selectedCategory);
+        this.flattenCategories(category.childCategories, selectedCategory, category);
       }
     }
   }
