@@ -1,0 +1,10 @@
+.category-list {
+  &__item {
+    .btn {
+      padding: 0;
+      &.active {
+        color: #f36a00;
+      }
+    }
+  }
+}

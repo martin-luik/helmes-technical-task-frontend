@@ -2,6 +2,7 @@
   <li *ngFor="let category of categories" class='category-list__item'>
     <button
       [class.btn]='true'
+      [class.btn-link]='true'
       [class.active]='selectedCategory?.id === category.id'
       [attr.data-setid]='category.id + "_" + category.name'
       (click)="selectCategory(category)"
