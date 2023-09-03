@@ -5,6 +5,9 @@
       "editButtonLabel": "Edit category",
       "deleteButtonLabel": "Delete category"
     },
+    "sideMenu": {
+      "addButtonLabel": "Add category"
+    },
     "form": {
       "add": {
         "title": "Add category",

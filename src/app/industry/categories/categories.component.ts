@@ -43,8 +43,12 @@ export class CategoriesComponent {
     this.categoryPosition = null;
   }
 
-  selectFromType(value: FormType) {
+  selectFromType(value: FormType, reset?: true) {
     this.formType = value;
+    if (reset) {
+      this.category = null;
+      this.categoryPosition = null;
+    }
   }
 
   deleteCategory(id: number) {

@@ -1,9 +1,10 @@
 .side-menu {
   height: 100vh;
+  padding: 0;
+  background: #FFFF;
 
   &__content {
-    background: #FFFF;
-    height: 100%;
+    height: calc(100% - 38px);
     overflow: auto;
   }
 }
