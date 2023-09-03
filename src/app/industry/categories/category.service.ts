@@ -28,10 +28,6 @@ export class CategoryService {
     return this.http.get<Category[]>('/api/categories');
   }
 
-  getCategoriesStack() {
-    return this.http.get<any>('/api/categories/stack');
-  }
-
   addCategory(category: any) {
     return this.http.post<any>('/api/categories', category);
   }

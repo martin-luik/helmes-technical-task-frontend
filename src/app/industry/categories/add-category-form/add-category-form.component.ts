@@ -14,7 +14,7 @@ export class AddCategoryFormComponent implements OnInit {
 
   serverValidationErrors: string[] = [];
 
-  profileForm = new FormGroup({
+  addCategoryForm = new FormGroup({
     relationId: new FormControl<number | null>(null),
     name: new FormControl<string | null>(null),
     status: new FormControl<boolean | null>(null)
@@ -26,15 +26,15 @@ export class AddCategoryFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.category) {
-      this.profileForm.patchValue({
+      this.addCategoryForm.patchValue({
         relationId: this.category?.id
       });
     }
   }
 
   submitForm() {
-    if (this.profileForm.valid) {
-      const formData = this.profileForm.value;
+    if (this.addCategoryForm.valid) {
+      const formData = this.addCategoryForm.value;
 
       this.categoryService.addCategory({
         relationId: formData.relationId,
@@ -44,7 +44,7 @@ export class AddCategoryFormComponent implements OnInit {
         {
           next: response => {
             this.reloadCategoriesEvent.emit(response);
-            this.profileForm.reset();
+            this.addCategoryForm.reset();
           },
           error: error => {
             if (error.status === 400) {

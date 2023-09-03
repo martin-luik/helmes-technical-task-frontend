@@ -10,12 +10,14 @@ import { CategoryService } from '../category.service';
 })
 export class EditCategoryFormComponent implements OnInit {
   @Input() category: Category | null = null;
+  @Input() categories: Category[] = [];
   @Output() reloadCategoriesEvent = new EventEmitter<Category[]>();
 
-  categoriesStack: Category[] = [];
   serverValidationErrors: string[] = [];
+  flattenedCategories: any[] = [];
 
-  profileForm = new FormGroup({
+
+  editCategoryForm = new FormGroup({
     id: new FormControl<number | null>(null),
     relationId: new FormControl<number | null>(null),
     name: new FormControl<string | null>(null),
@@ -27,21 +29,18 @@ export class EditCategoryFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.category) {
-      this.profileForm.patchValue({
+      this.editCategoryForm.patchValue({
         id: this.category?.id,
         relationId: this.category?.relationId,
         name: this.category?.name
       });
-
-      this.categoryService.getCategoriesStack().subscribe(response => {
-        this.categoriesStack = response;
-      });
     }
+    this.flattenCategories(this.categories);
   }
 
   submitForm() {
-    if (this.profileForm.valid) {
-      const formData = this.profileForm.value;
+    if (this.editCategoryForm.valid) {
+      const formData = this.editCategoryForm.value;
 
      this.categoryService.editCategory({
         id: formData.id,
@@ -50,7 +49,7 @@ export class EditCategoryFormComponent implements OnInit {
       }).subscribe({
        next: response => {
          this.reloadCategoriesEvent.emit(response);
-         this.profileForm.reset();
+         this.editCategoryForm.reset();
        },
         error: error => {
           if (error.status === 400) {
@@ -61,6 +60,15 @@ export class EditCategoryFormComponent implements OnInit {
         }
      });
     } else {
+    }
+  }
+
+  flattenCategories(categories: any[]) {
+    for (const category of categories) {
+      this.flattenedCategories.push(category);
+      if (category.childCategories && category.childCategories.length > 0) {
+        this.flattenCategories(category.childCategories);
+      }
     }
   }
 }

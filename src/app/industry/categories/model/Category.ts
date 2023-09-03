@@ -5,8 +5,3 @@ export interface Category {
   status: boolean
   childCategories: Category[];
 }
-
-export interface CategoryStack {
-  id: number;
-  name: string;
-}

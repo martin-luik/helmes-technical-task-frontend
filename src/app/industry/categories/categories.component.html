@@ -4,6 +4,7 @@
       <app-category-tree
         [categories]='categories'
       ></app-category-tree>
+      <button class='btn btn-success' (click)='selectFromType(FormType.Add)'>Add category</button>
     </div>
   </div>
   <div class='content col-8 mt-2'>
@@ -18,17 +19,24 @@
       </ul>
       <button *ngIf='category' class='btn btn-danger me-2' (click)='deleteCategory(category.id)'>Delete category</button>
     </nav>
-    <p>{{categoryPosition}}</p>
-    <app-add-category-form
-      *ngIf='formType === FormType.Add'
-      [category]='category'
-      (reloadCategoriesEvent)='reloadCategories($event)'>
-    </app-add-category-form>
-    <app-edit-category-form
-      *ngIf='formType === FormType.Edit && category'
-      [category]='category'
-      (reloadCategoriesEvent)='reloadCategories($event)'>
-    </app-edit-category-form>
+    <div class="row">
+      <div class="col-12 py-2">
+        <p>{{categoryPosition}}</p>
+      </div>
+    </div>
+    <div class="row" *ngIf='formType === FormType.Add'>
+      <app-add-category-form
+        [category]='category'
+        (reloadCategoriesEvent)='reloadCategories($event)'>
+      </app-add-category-form>
+    </div>
+    <div class="row" *ngIf='formType === FormType.Edit && category'>
+      <app-edit-category-form
+        [category]='category'
+        [categories]='categories'
+        (reloadCategoriesEvent)='reloadCategories($event)'>
+      </app-edit-category-form>
+    </div>
   </div>
 </div>
 
