@@ -15,7 +15,7 @@
           <select id='relation-id' class='form-control' formControlName='relationId'>
             <option value="">{{ 'category.form.edit.selectDropdownPlaceholder' | translate }}</option>
             <option *ngFor="let category of flattenedCategories" [ngValue]="category.id">
-              {{ category.name }}
+              {{ category.position || category.name }}
             </option>
           </select>
         </div>

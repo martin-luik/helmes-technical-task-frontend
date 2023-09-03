@@ -63,14 +63,19 @@ export class EditCategoryFormComponent implements OnInit {
     }
   }
 
-  flattenCategories(categories: any[], selectedCategory: Category | null = null, parentCategory: Category | null = null) {
+  flattenCategories(categories: any[], selectedCategory: Category | null = null, parentCategory: Category | null = null, position: string = '') {
     for (const category of categories) {
       if (selectedCategory && (category.id === selectedCategory.id || (parentCategory && category.id === parentCategory.id))) {
         continue;
       }
-      this.flattenedCategories.push(category);
+
+      const calculatedPosition = position ? `${position} > ${category.name}` : category.name;
+
+      const categoryWithPosition = { ...category, position: calculatedPosition };
+
+      this.flattenedCategories.push(categoryWithPosition);
       if (category.childCategories && category.childCategories.length > 0) {
-        this.flattenCategories(category.childCategories, selectedCategory, category);
+        this.flattenCategories(category.childCategories, selectedCategory, category, calculatedPosition);
       }
     }
   }
