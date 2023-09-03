@@ -1,0 +1,28 @@
+<div *ngIf='serverValidationErrors.length' class="alert alert-danger" role="alert">
+  <div class='row'>
+    <div class='col-12' *ngFor='let error of serverValidationErrors'>
+      {{error}}
+    </div>
+  </div>
+</div>
+<div class='card'>
+  <h5 class="card-header">Edit category</h5>
+  <div class="card-body">
+    <form [formGroup]='profileForm' (ngSubmit)='submitForm()'>
+      <div class='form-row'>
+        <div class='form-group pt-2'>
+          <label for='relation-id'>Category: </label>
+          <select id='relation-id' class='form-control' formControlName='relationId'>
+            <option [ngValue]='null'>-</option>
+            <option *ngFor='let category of categoriesStack' [ngValue]='category.id'>{{category.name}}</option>
+          </select>
+        </div>
+        <div class='form-group pb-2 pt-2'>
+          <label for='name'>Name: </label>
+          <input id='name' class='form-control' type='text' formControlName='name'>
+        </div>
+      </div>
+      <button class='btn btn-primary' type='submit'>Submit</button>
+    </form>
+  </div>
+</div>

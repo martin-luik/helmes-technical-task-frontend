@@ -1,0 +1,13 @@
+<ul class='category-list'>
+  <li *ngFor="let category of categories" class='category-list__item'>
+    <button
+      [class.btn]='true'
+      [class.active]='selectedPosition === getPosition(category.name)'
+      (click)="selectCategory(category)">{{category.name}}
+    </button>
+    <app-category-tree
+      [position]='getPosition(category.name)'
+      [categories]="category.childCategories">
+    </app-category-tree>
+  </li>
+</ul>
