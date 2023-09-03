@@ -7,7 +7,6 @@
       (click)="selectCategory(category)"
     >{{category.name}}</button>
     <app-category-tree
-      *ngIf="selectedCategory !== null"
       [position]='getPosition(category.name)'
       [categories]="category.childCategories">
     </app-category-tree>
