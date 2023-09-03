@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "code-gen": "npx playwright codegen http://localhost:4200"
+    "test": "npx playwright test",
+    "test-debug": "npx playwright test --debug",
+    "test-headed": "SLOW_MO=500 npx playwright test --headed",
+    "code-gen": "npx playwright codegen http://localhost:4200",
+    "report": "npx playwright show-report",
+    "clean": "rm -fR test-results/ playwright-report/ states/"
   },
   "keywords": [],
   "author": "",
