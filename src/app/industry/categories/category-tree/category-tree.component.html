@@ -4,10 +4,10 @@
       [class.btn]='true'
       [class.btn-link]='true'
       [class.active]='selectedCategory?.id === category.id'
-      [attr.data-setid]='category.id + "_" + category.name'
       (click)="selectCategory(category)"
     >{{category.name}}</button>
     <app-category-tree
+      *ngIf="selectedCategory !== null"
       [position]='getPosition(category.name)'
       [categories]="category.childCategories">
     </app-category-tree>
