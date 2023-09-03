@@ -4,20 +4,20 @@
       <app-category-tree
         [categories]='categories'
       ></app-category-tree>
-      <button class='btn btn-success' (click)='selectFromType(FormType.Add)'>Add category</button>
+      <button class='btn btn-success' (click)='selectFromType(FormType.Add)'>{{ 'category.nav.addButtonLabel' | translate }}</button>
     </div>
   </div>
   <div class='content col-8 mt-2'>
     <nav class='navbar navbar-expand-lg rounded-3'>
       <ul class='navbar-nav me-auto'>
         <li class='nav-item me-2 ms-2'>
-          <button class='btn btn-success' (click)='selectFromType(FormType.Add)'>Add category</button>
+          <button class='btn btn-success' (click)='selectFromType(FormType.Add)'>{{ 'category.nav.addButtonLabel' | translate }}</button>
         </li>
         <li class='nav-item'>
-          <button *ngIf='category' class='btn btn-primary' (click)='selectFromType(FormType.Edit)'>Edit category</button>
+          <button *ngIf='category' class='btn btn-primary' (click)='selectFromType(FormType.Edit)'>{{ 'category.nav.editButtonLabel' | translate }}</button>
         </li>
       </ul>
-      <button *ngIf='category' class='btn btn-danger me-2' (click)='deleteCategory(category.id)'>Delete category</button>
+      <button *ngIf='category' class='btn btn-danger me-2' (click)='deleteCategory(category.id)'>{{ 'category.nav.deleteButtonLabel' | translate }}</button>
     </nav>
     <div class="row">
       <div class="col-12 py-2">

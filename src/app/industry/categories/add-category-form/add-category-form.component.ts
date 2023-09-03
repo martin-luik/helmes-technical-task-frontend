@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category } from '../model/Category';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CategoryService } from '../category.service';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-add-category-form',

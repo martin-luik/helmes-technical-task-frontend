@@ -1,0 +1,32 @@
+{
+  "category": {
+    "nav": {
+      "addButtonLabel": "Add category",
+      "editButtonLabel": "Edit category",
+      "deleteButtonLabel": "Delete category"
+    },
+    "form": {
+      "add": {
+        "title": "Add category",
+        "nameFieldLabel": "Name: *",
+        "agreeToTermsFieldLabel": "Agree to terms *",
+        "submitLabel": "Save"
+      },
+      "edit": {
+        "title": "Edit category",
+        "categoryFieldLabel": "Category:",
+        "selectDropdownPlaceholder": "Select category",
+        "nameFieldLabel": "Name:",
+        "submitLabel": "Save"
+      }
+    }
+  },
+  "error": {
+    "validation": {
+      "category": {
+        "name": "Name is required",
+        "status": "Acceptance of terms is required"
+      }
+    }
+  }
+}
