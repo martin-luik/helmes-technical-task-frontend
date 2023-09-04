@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Category, FlattenedCategories} from '../model/Category';
-import { FormControl, FormGroup } from '@angular/forms';
-import { CategoryService } from '../category.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {CategoryService} from '../category.service';
 import {ToastrService} from "ngx-toastr";
 import {TranslateService} from "@ngx-translate/core";
 
@@ -44,18 +44,18 @@ export class EditCategoryFormComponent implements OnInit {
     if (this.editCategoryForm.valid) {
       const formData = this.editCategoryForm.value;
 
-     this.categoryService.editCategory({
+      this.categoryService.editCategory({
         id: formData.id,
         relationId: formData.relationId,
         name: formData.name,
       } as Category).subscribe({
-       next: response => {
-         this.reloadCategoriesEvent.emit(response);
-         this.editCategoryForm.reset();
-       },
-       complete: () => {
-         this.toastr.success(this.translate.instant('industry.categories.form.edit.toast.success'));
-       },
+        next: response => {
+          this.reloadCategoriesEvent.emit(response);
+          this.editCategoryForm.reset();
+        },
+        complete: () => {
+          this.toastr.success(this.translate.instant('industry.categories.form.edit.toast.success'));
+        },
         error: error => {
           if (error.status === 400) {
             this.serverValidationErrors = error.error.errors;
@@ -63,7 +63,7 @@ export class EditCategoryFormComponent implements OnInit {
             this.toastr.error(this.translate.instant('industry.categories.form.edit.toast.error'));
           }
         }
-     });
+      });
     }
   }
 
@@ -75,7 +75,7 @@ export class EditCategoryFormComponent implements OnInit {
 
       const calculatedPosition = position ? `${position} > ${category.name}` : category.name;
 
-      const categoryWithPosition = { ...category, position: calculatedPosition };
+      const categoryWithPosition = {...category, position: calculatedPosition};
 
       this.flattenedCategories.push(categoryWithPosition as FlattenedCategories);
       if (category.childCategories && category.childCategories.length > 0) {

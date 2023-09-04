@@ -33,6 +33,12 @@
             "error": "Something went wrong. Please try again later."
           }
         }
+      },
+      "delete": {
+        "toast": {
+          "success": "Category deleted successfully",
+          "error": "Something went wrong. Please try again later."
+        }
       }
     }
   },

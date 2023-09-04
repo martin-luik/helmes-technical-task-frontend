@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { CategoryService } from './category.service';
-import { Category } from './model/Category';
+import {Component} from '@angular/core';
+import {CategoryService} from './category.service';
+import {Category} from './model/Category';
+import {ToastrService} from "ngx-toastr";
+import {TranslateService} from "@ngx-translate/core";
 
 enum FormType {
   Add = 'Add',
@@ -24,7 +26,7 @@ export class CategoriesComponent {
 
   protected readonly FormType = FormType;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private toastr: ToastrService, private translate: TranslateService) {
     this.categoryService.getCategories()
       .subscribe(response => {
         this.categories = response;
@@ -57,10 +59,16 @@ export class CategoriesComponent {
 
   deleteCategory(id: number) {
     this.categoryService.deleteCategory(id)
-      .subscribe(response => {
-        this.categories = response;
-        this.category = null;
-        this.categoryPosition = null;
+      .subscribe({
+        next: response => {
+          this.categories = response;
+          this.category = null;
+          this.categoryPosition = null;
+          this.toastr.success(this.translate.instant('industry.categories.delete.toast.success'));
+        },
+        error: () => {
+          this.toastr.error(this.translate.instant('industry.categories.delete.toast.error'));
+        }
       });
   }
 
