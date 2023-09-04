@@ -37,3 +37,28 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #222222;
 }
+
+.toast {
+  &-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+
+  &-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  &-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 16px;
+    border-radius: 8px;
+  }
+}
+

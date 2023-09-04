@@ -3,6 +3,7 @@ import { Category } from '../model/Category';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CategoryService } from '../category.service';
 import {TranslateService} from "@ngx-translate/core";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-category-form',
@@ -21,7 +22,7 @@ export class AddCategoryFormComponent implements OnInit {
     status: new FormControl<boolean | null>(null)
   });
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private toastr: ToastrService, private translate: TranslateService) {
 
   }
 
@@ -47,16 +48,18 @@ export class AddCategoryFormComponent implements OnInit {
             this.reloadCategoriesEvent.emit(response);
             this.addCategoryForm.reset();
           },
+          complete: () => {
+            this.toastr.success(this.translate.instant('industry.categories.form.add.toast.success'));
+          },
           error: error => {
             if (error.status === 400) {
               this.serverValidationErrors = error.error.errors;
             } else {
-              console.log(error)
+              this.toastr.error(this.translate.instant('industry.categories.form.add.toast.error'));
             }
           }
         }
       );
-    } else {
     }
   }
 }

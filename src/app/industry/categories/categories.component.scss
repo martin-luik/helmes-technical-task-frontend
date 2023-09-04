@@ -2,6 +2,8 @@
   height: 100vh;
   padding: 0;
   background: #FFFF;
+  border: 1px solid #E6ECEF;
+  box-shadow: 0 4px 20px #0000000d;
 
   &__content {
     height: calc(100% - 38px);
@@ -11,6 +13,12 @@
 
 .content {
   & .navbar {
-    background-color: #e6ecef;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    color: #7a7a7a;
+    border: 1px solid #E6ECEF;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px #0000000d;
   }
 }

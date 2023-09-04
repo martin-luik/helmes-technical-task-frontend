@@ -16,14 +16,22 @@
           "title": "Add category",
           "nameFieldLabel": "Name: *",
           "agreeToTermsFieldLabel": "Agree to terms *",
-          "submitLabel": "Save"
+          "submitLabel": "Save",
+          "toast": {
+            "success": "Category added successfully",
+            "error": "Something went wrong. Please try again later."
+          }
         },
         "edit": {
           "title": "Edit category",
           "categoryFieldLabel": "Category:",
           "selectDropdownPlaceholder": "Select category",
           "nameFieldLabel": "Name:",
-          "submitLabel": "Save"
+          "submitLabel": "Save",
+          "toast": {
+            "success": "Category edited successfully",
+            "error": "Something went wrong. Please try again later."
+          }
         }
       }
     }

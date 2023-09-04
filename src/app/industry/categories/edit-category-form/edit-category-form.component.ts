@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category } from '../model/Category';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CategoryService } from '../category.service';
+import {ToastrService} from "ngx-toastr";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-edit-category-form',
@@ -23,7 +25,7 @@ export class EditCategoryFormComponent implements OnInit {
     name: new FormControl<string | null>(null),
   });
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private toastr: ToastrService, private translate: TranslateService) {
 
   }
 
@@ -51,15 +53,17 @@ export class EditCategoryFormComponent implements OnInit {
          this.reloadCategoriesEvent.emit(response);
          this.editCategoryForm.reset();
        },
+       complete: () => {
+         this.toastr.success(this.translate.instant('industry.categories.form.edit.toast.success'));
+       },
         error: error => {
           if (error.status === 400) {
             this.serverValidationErrors = error.error.errors;
           } else {
-            console.log(error)
+            this.toastr.error(this.translate.instant('industry.categories.form.edit.toast.error'));
           }
         }
      });
-    } else {
     }
   }
 
