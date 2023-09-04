@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Category } from '../model/Category';
+import {Category, FlattenedCategories} from '../model/Category';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CategoryService } from '../category.service';
 import {ToastrService} from "ngx-toastr";
@@ -16,7 +16,7 @@ export class EditCategoryFormComponent implements OnInit {
   @Output() reloadCategoriesEvent = new EventEmitter<Category[]>();
 
   serverValidationErrors: string[] = [];
-  flattenedCategories: any[] = [];
+  flattenedCategories: FlattenedCategories[] = [];
 
 
   editCategoryForm = new FormGroup({
@@ -48,7 +48,7 @@ export class EditCategoryFormComponent implements OnInit {
         id: formData.id,
         relationId: formData.relationId,
         name: formData.name,
-      }).subscribe({
+      } as Category).subscribe({
        next: response => {
          this.reloadCategoriesEvent.emit(response);
          this.editCategoryForm.reset();
@@ -67,7 +67,7 @@ export class EditCategoryFormComponent implements OnInit {
     }
   }
 
-  flattenCategories(categories: any[], selectedCategory: Category | null = null, parentCategory: Category | null = null, position: string = '') {
+  flattenCategories(categories: Category[], selectedCategory: Category | null = null, parentCategory: Category | null = null, position = '') {
     for (const category of categories) {
       if (selectedCategory && (category.id === selectedCategory.id || (parentCategory && category.id === parentCategory.id))) {
         continue;
@@ -76,8 +76,9 @@ export class EditCategoryFormComponent implements OnInit {
       const calculatedPosition = position ? `${position} > ${category.name}` : category.name;
 
       const categoryWithPosition = { ...category, position: calculatedPosition };
+      console.log(categoryWithPosition)
 
-      this.flattenedCategories.push(categoryWithPosition);
+      this.flattenedCategories.push(categoryWithPosition as FlattenedCategories);
       if (category.childCategories && category.childCategories.length > 0) {
         this.flattenCategories(category.childCategories, selectedCategory, category, calculatedPosition);
       }

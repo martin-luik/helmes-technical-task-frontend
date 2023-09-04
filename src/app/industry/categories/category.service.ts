@@ -28,15 +28,15 @@ export class CategoryService {
     return this.http.get<Category[]>('/api/categories');
   }
 
-  addCategory(category: any) {
-    return this.http.post<any>('/api/categories', category);
+  addCategory(category: Category) {
+    return this.http.post<Category[]>('/api/categories', category);
   }
 
-  editCategory(category: any) {
-    return this.http.put<any>('/api/categories', category);
+  editCategory(category: Category) {
+    return this.http.put<Category[]>('/api/categories', category);
   }
 
   deleteCategory(id: number) {
-    return this.http.delete<any>(`/api/categories/${id}`);
+    return this.http.delete<Category[]>(`/api/categories/${id}`);
   }
 }

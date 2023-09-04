@@ -42,7 +42,7 @@ export class AddCategoryFormComponent implements OnInit {
         relationId: formData.relationId,
         name: formData.name,
         status: formData.status
-      }).subscribe(
+      } as Category).subscribe(
         {
           next: response => {
             this.reloadCategoriesEvent.emit(response);
