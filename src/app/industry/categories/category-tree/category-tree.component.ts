@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Category } from '../model/Category';
-import { CategoryService } from '../category.service';
+import {Component, Input} from '@angular/core';
+import {Category} from '../model/Category';
+import {CategoryService} from '../category.service';
 
 @Component({
   selector: 'app-category-tree',
@@ -9,7 +9,8 @@ import { CategoryService } from '../category.service';
 })
 export class CategoryTreeComponent {
   @Input() categories: Category[] = [];
-  @Input()  position: string | null = null;
+  @Input() position: string | null = null;
+  @Input() expandAllCategories = false;
 
   selectedCategory: Category | null = null;
   selectedPosition: string | null = null;
@@ -31,9 +32,18 @@ export class CategoryTreeComponent {
   selectCategory(value: Category) {
     this.categoryService.setSelectedCategory(value);
     this.categoryService.setPosition(this.getPosition(value.name));
+    value.expanded = !value.expanded;
   }
 
   getPosition(name: string): string {
     return this.position === null ? name : `${this.position} > ${name}`;
+  }
+
+  isCategoryExpanded(expandAll: boolean, category: Category): boolean {
+    if (expandAll) {
+      category.expanded = false;
+      return expandAll;
+    }
+    return !!category.expanded;
   }
 }

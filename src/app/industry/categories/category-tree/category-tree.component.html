@@ -7,6 +7,8 @@
       (click)="selectCategory(category)"
     >{{category.name}}</button>
     <app-category-tree
+      *ngIf="isCategoryExpanded(expandAllCategories, category)"
+      [expandAllCategories]="expandAllCategories"
       [position]='getPosition(category.name)'
       [categories]="category.childCategories">
     </app-category-tree>

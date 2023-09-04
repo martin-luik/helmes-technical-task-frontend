@@ -4,4 +4,5 @@ export interface Category {
   name: string;
   status: boolean
   childCategories: Category[];
+  expanded?: boolean;
 }

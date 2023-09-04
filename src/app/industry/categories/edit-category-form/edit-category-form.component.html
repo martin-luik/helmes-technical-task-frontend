@@ -6,25 +6,25 @@
   </div>
 </div>
 <div class='card'>
-  <h5 class="card-header">{{ 'category.form.edit.title' | translate }}</h5>
+  <h5 class="card-header">{{ 'industry.categories.form.edit.title' | translate }}</h5>
   <div class="card-body">
     <form [formGroup]='editCategoryForm' (ngSubmit)='submitForm()'>
       <div class='form-row'>
         <div class='form-group pt-2'>
-          <label for='relation-id'>{{ 'category.form.edit.categoryFieldLabel' | translate }}</label>
+          <label for='relation-id'>{{ 'industry.categories.form.edit.categoryFieldLabel' | translate }}</label>
           <select id='relation-id' class='form-control' formControlName='relationId'>
-            <option value="">{{ 'category.form.edit.selectDropdownPlaceholder' | translate }}</option>
+            <option value="">{{ 'industry.categories.form.edit.selectDropdownPlaceholder' | translate }}</option>
             <option *ngFor="let category of flattenedCategories" [ngValue]="category.id">
               {{ category.position || category.name }}
             </option>
           </select>
         </div>
         <div class='form-group pb-4 pt-2'>
-          <label for='name'>{{ 'category.form.edit.nameFieldLabel' | translate }}</label>
+          <label for='name'>{{ 'industry.categories.form.edit.nameFieldLabel' | translate }}</label>
           <input id='name' class='form-control' type='text' formControlName='name'>
         </div>
       </div>
-      <button class='btn btn-primary' type='submit'>{{ 'category.form.edit.submitLabel' | translate }}</button>
+      <button class='btn btn-primary' type='submit'>{{ 'industry.categories.form.edit.submitLabel' | translate }}</button>
     </form>
   </div>
 </div>

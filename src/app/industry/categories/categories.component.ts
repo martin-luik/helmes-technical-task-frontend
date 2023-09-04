@@ -20,6 +20,10 @@ export class CategoriesComponent {
 
   categoryPosition: string | null = null;
 
+  expandAllCategories = false;
+
+  protected readonly FormType = FormType;
+
   constructor(private categoryService: CategoryService) {
     this.categoryService.getCategories()
       .subscribe(response => {
@@ -60,5 +64,7 @@ export class CategoriesComponent {
       });
   }
 
-  protected readonly FormType = FormType;
+  toggleExpandAllCategories() {
+    this.expandAllCategories = !this.expandAllCategories;
+  }
 }

@@ -1,25 +1,36 @@
 <div class='row'>
   <div class='side-menu col-4 pt-3 pb-3'>
     <div class='side-menu__content'>
+      <div class="col-12 ps-2 pe-2 d-flex justify-content-end">
+        <button class="btn btn-outline-primary"
+                (click)="toggleExpandAllCategories()">
+          {{ expandAllCategories ? ('industry.categories.sideMenu.collapseAllButtonLabel' | translate) : ('industry.categories.sideMenu.expandAllButtonLabel' | translate) }}
+        </button>
+      </div>
       <app-category-tree
+        [expandAllCategories]='expandAllCategories'
         [categories]='categories'
       ></app-category-tree>
     </div>
     <div class="col-12 ps-2 pe-2">
-      <button class='btn btn-primary w-100' (click)='selectFromType(FormType.Add, true)'>{{ 'category.sideMenu.addButtonLabel' | translate }}</button>
+      <button class='btn btn-primary w-100'
+              (click)='selectFromType(FormType.Add, true)'>{{ 'industry.categories.sideMenu.addButtonLabel' | translate }}</button>
     </div>
   </div>
   <div class='content col-8 mt-2'>
     <nav class='navbar navbar-expand-lg rounded-3'>
       <ul class='navbar-nav me-auto'>
         <li class='nav-item me-2 ms-2'>
-          <button class='btn btn-primary' (click)='selectFromType(FormType.Add)'>{{ 'category.nav.addButtonLabel' | translate }}</button>
+          <button class='btn btn-primary'
+                  (click)='selectFromType(FormType.Add)'>{{ 'industry.categories.nav.addButtonLabel' | translate }}</button>
         </li>
         <li class='nav-item'>
-          <button *ngIf='category' class='btn btn-warning' (click)='selectFromType(FormType.Edit)'>{{ 'category.nav.editButtonLabel' | translate }}</button>
+          <button *ngIf='category' class='btn btn-warning'
+                  (click)='selectFromType(FormType.Edit)'>{{ 'industry.categories.nav.editButtonLabel' | translate }}</button>
         </li>
       </ul>
-      <button *ngIf='category' class='btn btn-danger me-2' (click)='deleteCategory(category.id)'>{{ 'category.nav.deleteButtonLabel' | translate }}</button>
+      <button *ngIf='category' class='btn btn-danger me-2'
+              (click)='deleteCategory(category.id)'>{{ 'industry.categories.nav.deleteButtonLabel' | translate }}</button>
     </nav>
     <div class="row">
       <div class="col-12 py-2">
