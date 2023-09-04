@@ -76,7 +76,6 @@ export class EditCategoryFormComponent implements OnInit {
       const calculatedPosition = position ? `${position} > ${category.name}` : category.name;
 
       const categoryWithPosition = { ...category, position: calculatedPosition };
-      console.log(categoryWithPosition)
 
       this.flattenedCategories.push(categoryWithPosition as FlattenedCategories);
       if (category.childCategories && category.childCategories.length > 0) {

@@ -12,7 +12,7 @@
       <div class='form-row'>
         <div class='form-group pt-2'>
           <label for='relation-id'>{{ 'industry.categories.form.edit.categoryFieldLabel' | translate }}</label>
-          <select id='relation-id' class='form-control' formControlName='relationId'>
+          <select id='relation-id' class='form-select' formControlName='relationId'>
             <option value="">{{ 'industry.categories.form.edit.selectDropdownPlaceholder' | translate }}</option>
             <option *ngFor="let category of flattenedCategories" [ngValue]="category.id">
               {{ category.position || category.name }}
