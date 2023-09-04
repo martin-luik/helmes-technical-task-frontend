@@ -14,7 +14,12 @@ test('Edit category', async ({ page }) => {
   await page.getByRole('button', { name: 'Save' }).click();
   await page.getByRole('button', { name: 'New category 2' }).click();
   await page.getByRole('button', { name: 'Edit category' }).click();
+
   await page.getByLabel('Name:').click();
+  await page.getByLabel('Name:').fill('');
+  await page.getByRole('button', { name: 'Save' }).click();
+  await expect(page.getByText('* Name is required')).toBeVisible();
+
   await page.getByLabel('Name:').fill('New subcategory 1');
   await page.getByLabel('Category:').selectOption({ label: 'New category 1' });
   await page.getByRole('button', { name: 'Save' }).click();

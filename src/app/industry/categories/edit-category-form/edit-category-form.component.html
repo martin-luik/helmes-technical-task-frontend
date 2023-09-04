@@ -1,7 +1,7 @@
 <div *ngIf='serverValidationErrors.length' class="alert alert-danger" role="alert">
   <div class='row'>
     <div class='col-12' *ngFor='let error of serverValidationErrors'>
-      {{error}}
+      * {{ error | translate }}
     </div>
   </div>
 </div>
