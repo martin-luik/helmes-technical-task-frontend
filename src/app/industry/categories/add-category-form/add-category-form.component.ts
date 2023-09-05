@@ -7,8 +7,7 @@ import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-category-form',
-  templateUrl: './add-category-form.component.html',
-  styleUrls: ['./add-category-form.component.scss']
+  templateUrl: './add-category-form.component.html'
 })
 export class AddCategoryFormComponent implements OnInit {
   @Input() category: Category | null = null;

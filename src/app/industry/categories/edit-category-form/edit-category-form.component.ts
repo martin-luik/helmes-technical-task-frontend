@@ -7,8 +7,7 @@ import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-edit-category-form',
-  templateUrl: './edit-category-form.component.html',
-  styleUrls: ['./edit-category-form.component.scss']
+  templateUrl: './edit-category-form.component.html'
 })
 export class EditCategoryFormComponent implements OnInit {
   @Input() category: Category | null = null;

@@ -1,6 +1,6 @@
 export interface Category {
   id: number;
-  relationId: number;
+  relationId: number | null;
   name: string;
   status: boolean
   childCategories: Category[];
@@ -9,7 +9,7 @@ export interface Category {
 
 export interface FlattenedCategories {
   id: number;
-  relationId: number;
+  relationId: number | null;
   name: string;
   status: boolean
   childCategories: FlattenedCategories[];
