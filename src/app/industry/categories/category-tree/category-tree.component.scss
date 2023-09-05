@@ -2,8 +2,57 @@
   list-style-type: none;
 
   &__item {
+
+    &.expanded {
+      &:before {
+        content: "+";
+        color: #0d6efd;
+        margin-right: 4px;
+      }
+    }
+
+    &.collapsed {
+      &:before {
+        content: "-";
+        color: #0d6efd;
+        margin-right: 4px;
+      }
+    }
+
+    &.empty {
+      &:before {
+        content: "";
+        margin-right: 12px;
+      }
+    }
+
+    &:before {
+      &.collapsed {
+        content: "-";
+      }
+
+      &.expanded {
+        content: "+";
+      }
+
+      &.empty {
+        content: "";
+      }
+
+      margin-right: 4px;
+    }
+
     .btn {
       padding: 0;
+
+      &.active {
+        color: #f36a00;
+      }
+    }
+
+    span {
+      color: #0d6efd;
+
       &.active {
         color: #f36a00;
       }

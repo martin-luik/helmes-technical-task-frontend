@@ -25,7 +25,7 @@
         "edit": {
           "title": "Edit category",
           "categoryFieldLabel": "Category:",
-          "selectDropdownPlaceholder": "Select category",
+          "selectDropdownEmptyField": "-- ROOT CATEGORY --",
           "nameFieldLabel": "Name:",
           "submitLabel": "Save",
           "toast": {

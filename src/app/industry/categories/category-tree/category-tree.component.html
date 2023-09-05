@@ -1,5 +1,11 @@
 <ul class='category-list'>
-  <li *ngFor="let category of categories" class='category-list__item'>
+  <li *ngFor="let category of categories"
+      class='category-list__item'
+      [class.collapsed]='isCategoryExpanded(expandAllCategories, category)'
+      [class.expanded]='!isCategoryExpanded(expandAllCategories, category)'
+      [class.empty]='category.childCategories.length === 0'
+      [class.active]='selectedCategory?.id === category.id'
+  >
     <button
       [class.btn]='true'
       [class.btn-link]='true'

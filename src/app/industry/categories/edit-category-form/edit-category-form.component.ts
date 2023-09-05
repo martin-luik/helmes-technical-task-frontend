@@ -66,7 +66,12 @@ export class EditCategoryFormComponent implements OnInit {
     }
   }
 
-  flattenCategories(categories: Category[], selectedCategory: Category | null = null, parentCategory: Category | null = null, position = '') {
+  flattenCategories(
+    categories: Category[],
+    selectedCategory: Category | null = null,
+    parentCategory: Category | null = null,
+    position = ''
+  ) {
     for (const category of categories) {
       if (selectedCategory && (category.id === selectedCategory.id || (parentCategory && category.id === parentCategory.id))) {
         continue;
