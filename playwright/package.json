@@ -7,9 +7,11 @@
     "test": "npx playwright test",
     "test-debug": "npx playwright test --debug",
     "test-headed": "SLOW_MO=500 npx playwright test --headed",
+    "test-ci": "npm ci && CI=1 npm run test",
     "code-gen": "npx playwright codegen http://localhost:4200",
     "report": "npx playwright show-report",
-    "clean": "rm -fR test-results/ playwright-report/ states/"
+    "clean": "rm -fR test-results/ playwright-report/ states/",
+    "setup": "rm -fR ~/Library/Caches/ms-playwright && npm install && npx playwright install"
   },
   "keywords": [],
   "author": "",
