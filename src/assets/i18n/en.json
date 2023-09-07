@@ -9,7 +9,7 @@
       "sideMenu": {
         "expandAllButtonLabel": "Expand all",
         "collapseAllButtonLabel": "Collapse all",
-        "addButtonLabel": "Add category"
+        "addRootButtonLabel": "Add root category"
       },
       "form": {
         "add": {
