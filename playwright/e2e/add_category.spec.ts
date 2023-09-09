@@ -1,4 +1,4 @@
-import {expect, Page, test} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 test('Add new category', async ({ page }) => {
   await page.goto('http://localhost:4200/');
 

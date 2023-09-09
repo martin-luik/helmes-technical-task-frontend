@@ -31,9 +31,7 @@ describe('CategoryTreeComponent', () => {
         { provide: CategoryService, useValue: categoryServiceMock }, // Provide the mock service
       ],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(CategoryTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
