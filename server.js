@@ -15,7 +15,7 @@ const options = {
 };
 
 const apiProxy = createProxyMiddleware('/api', {
-  target: 'https://localhost:8080/api',
+  target: 'https://localhost:9090/api',
   changeOrigin: true,
   secure: false,
   pathRewrite: {
