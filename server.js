@@ -14,8 +14,10 @@ const options = {
   cert: fs.readFileSync('./certificates/certificate.crt'),
 };
 
+const targetApiUrl = process.env.API_TARGET || 'https://localhost:9090/api'; // Use the environment variable or default to 'https://localhost:9090/api'
+
 const apiProxy = createProxyMiddleware('/api', {
-  target: 'https://localhost:9090/api',
+  target: targetApiUrl,
   changeOrigin: true,
   secure: false,
   pathRewrite: {

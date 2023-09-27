@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: industry-app-frontend-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: industry-app-frontend
+  template:
+    metadata:
+      labels:
+        app: industry-app-frontend
+    spec:
+      containers:
+        - name: industry-app-frontend
+          image: main-docker-registry/industry-app-frontend:tag
+          env:
+            - name: API_TARGET
+              value: "https://host.docker.internal:9090/api"
+          command: ["npm", "run", "start-prod"]
